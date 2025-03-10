@@ -82,15 +82,14 @@ public class EmployeeManagerController implements SalaryInterface {
         return new ResponseEntity<>(new ResponseDto((employeeService.findByName(decodedName).getBody().getEmployeeEntityList()), "Employee Found Successfully", HttpStatus.OK), HttpStatus.OK);
     }
 
-
-    @PatchMapping("/updateEmployeeById/{id}")
+    @PostMapping("/updateEmployeeById/{id}")
     public ResponseEntity<ResponseDto> updateEmployeeUsingId(@PathVariable int id, @Valid @RequestBody EmployeeEntity employeeEntity) {
         EmployeeEntity updatedEmployee = employeeService.update(id, employeeEntity);
         return new ResponseEntity<>(new ResponseDto(updatedEmployee, "Employee updated successfully", HttpStatus.OK), HttpStatus.OK);
     }
 
 
-    @PatchMapping("/updateDepartmentById/{id}")
+    @PostMapping("/updateDepartmentById/{id}")
     @Transactional
     public ResponseEntity<ResponseDto> updateDepartmentUsingId(@PathVariable int id, @Valid @RequestBody DepartmentEntity departmentEntity) throws Exception {
         EmployeeEntity employeeEntity = employeeService.findById(id).getBody().getEmployeeEntity();
@@ -99,7 +98,7 @@ public class EmployeeManagerController implements SalaryInterface {
         return new ResponseEntity<>(new ResponseDto(employeeService.save(employeeEntity), "Department updated successfully", HttpStatus.OK), HttpStatus.OK);
     }
 
-    @PatchMapping("/addProjectById/{id}")
+    @PostMapping("/addProjectById/{id}")
     @Transactional
     public ResponseEntity<ResponseDto> addProjectById(@PathVariable int id, @Valid @RequestBody List<ProjectEntity> projectEntity) throws Exception {
         EmployeeEntity employeeEntity = employeeService.findById(id).getBody().getEmployeeEntity();
@@ -108,7 +107,7 @@ public class EmployeeManagerController implements SalaryInterface {
         return new ResponseEntity<>(new ResponseDto(employeeService.save(employeeEntity), "Project added successfully", HttpStatus.OK), HttpStatus.OK);
     }
 
-    @PatchMapping("/removeProjectById/{id}")
+    @PostMapping("/removeProjectById/{id}")
     @Transactional
     public ResponseEntity<ResponseDto> removeProjectById(@PathVariable int id, @Valid @RequestBody List<ProjectEntity> projectEntity) throws Exception {
         EmployeeEntity employeeEntity = employeeService.findById(id).getBody().getEmployeeEntity();
@@ -128,7 +127,7 @@ public class EmployeeManagerController implements SalaryInterface {
         return new ResponseEntity<>(new ResponseDto(employeeService.save(employeeEntity), "Project removed updated successfully", HttpStatus.OK), HttpStatus.OK);
     }
 
-    @PatchMapping("/updateSalaryById/{id}")
+    @PostMapping("/updateSalaryById/{id}")
     @Transactional
     public ResponseEntity<ResponseDto> updateSalaryById(@PathVariable int id, @Valid @RequestBody SalaryEntity salaryEntity) throws Exception {
         EmployeeEntity employeeEntity = employeeService.findById(id).getBody().getEmployeeEntity();
