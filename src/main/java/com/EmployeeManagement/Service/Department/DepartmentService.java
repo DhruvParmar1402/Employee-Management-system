@@ -9,19 +9,18 @@ import java.util.Optional;
 
 
 @Service
-public class DepartmentService implements DepartmentInterface{
+public class DepartmentService implements DepartmentInterface {
 
     @Autowired
     private DepartmentRepo departmentRepository;
 
     public DepartmentEntity findOrCreateDepartment(DepartmentEntity departmentEntity) {
-        Optional<DepartmentEntity>departmentEntityOptional=departmentRepository.findById(departmentEntity.getDepartmentName());
-        if(departmentEntityOptional.isPresent())
-        {
+        Optional<DepartmentEntity> departmentEntityOptional = departmentRepository.findById(departmentEntity.getDepartmentName());
+        if (departmentEntityOptional.isPresent()) {
             departmentEntityOptional.get().setNumberOfEmployees(departmentEntity.getNumberOfEmployees());
             return departmentEntityOptional.get();
         }
-        return  departmentRepository.save(departmentEntity);
+        return departmentRepository.save(departmentEntity);
     }
 
     public void save(DepartmentEntity departmentEntity) {

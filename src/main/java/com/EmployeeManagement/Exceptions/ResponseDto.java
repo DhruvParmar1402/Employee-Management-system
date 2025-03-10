@@ -23,18 +23,18 @@ public class ResponseDto {
         this.employeeEntity = employeeEntity;
         this.message = message;
         this.statusCode = statusCode;
-        dateTime=LocalDateTime.now();
+        dateTime = LocalDateTime.now();
     }
 
     public ResponseDto(List<EmployeeEntity> employeeEntityList, String message, HttpStatus statusCode) {
         this.employeeEntityList = employeeEntityList;
         this.message = message;
         this.statusCode = statusCode;
-        dateTime=LocalDateTime.now();
+        dateTime = LocalDateTime.now();
     }
 
     public ResponseDto(String employeeSuccessfullyDeleted, HttpStatus httpStatus) {
-        this.message =employeeSuccessfullyDeleted;
-        this.statusCode=httpStatus;
+        this.message = employeeSuccessfullyDeleted;
+        this.statusCode = httpStatus;
     }
 }

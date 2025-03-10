@@ -19,7 +19,7 @@ public class ExceptionsDto {
     public ExceptionsDto(String field, String message, HttpStatus code) {
         this.field = field;
         this.message = message;
-        this.httpStatus=code;
-        dateTime=LocalDateTime.now();
+        this.httpStatus = code;
+        dateTime = LocalDateTime.now();
     }
 }

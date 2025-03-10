@@ -17,12 +17,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<ExceptionsDto>> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        List<ExceptionsDto> errors=new ArrayList<>();
+        List<ExceptionsDto> errors = new ArrayList<>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
 
-            errors.add(new ExceptionsDto(fieldName,errorMessage,HttpStatus.BAD_REQUEST));
+            errors.add(new ExceptionsDto(fieldName, errorMessage, HttpStatus.BAD_REQUEST));
         });
         Collections.reverse(errors);
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
@@ -30,6 +30,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionsDto> handleGenericException(Exception ex) {
-        return new ResponseEntity<>(new ExceptionsDto(ex.getClass().getSimpleName(),ex.getMessage(), HttpStatus.BAD_REQUEST),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ExceptionsDto(ex.getClass().getSimpleName(), ex.getMessage(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
     }
 }

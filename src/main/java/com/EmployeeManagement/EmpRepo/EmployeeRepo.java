@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface EmployeeRepo extends JpaRepository<EmployeeEntity,Integer> {
+public interface EmployeeRepo extends JpaRepository<EmployeeEntity, Integer> {
     Optional<EmployeeEntity> findByNameIgnoreCase(String name);
 
     List<EmployeeEntity> findAllByNameIgnoreCase(String name);

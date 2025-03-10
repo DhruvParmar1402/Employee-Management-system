@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService implements EmployeeInterface{
+public class EmployeeService implements EmployeeInterface {
     @Autowired
     private EmployeeRepo employeeRepo;
 
@@ -74,13 +74,11 @@ public class EmployeeService implements EmployeeInterface{
         return employeeRepo.save(toBeUpdatedEmployee);
     }
 
-    public List<EmployeeEntity> findAllManagers()
-    {
+    public List<EmployeeEntity> findAllManagers() {
         return employeeRepo.findByOccupationIgnoreCase("manager");
     }
 
-    public List<EmployeeEntity> findAllSalaryEntity_BasicSalaryGreaterThan(int salary)
-    {
+    public List<EmployeeEntity> findAllSalaryEntity_BasicSalaryGreaterThan(int salary) {
         return employeeRepo.findBySalaryEntity_BasicSalaryGreaterThan(salary);
     }
 

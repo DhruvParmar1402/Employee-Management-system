@@ -31,5 +31,5 @@ public class DepartmentEntity {
 
     @OneToMany(mappedBy = "departmentEntity")
     @JsonIgnore
-    private List<EmployeeEntity> employeeEntity=new ArrayList<>();
+    private List<EmployeeEntity> employeeEntity = new ArrayList<>();
 }

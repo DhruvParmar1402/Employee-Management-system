@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProjectService implements ProjectInterface{
+public class ProjectService implements ProjectInterface {
 
     @Autowired
     private ProjectRepo projectRepository;
